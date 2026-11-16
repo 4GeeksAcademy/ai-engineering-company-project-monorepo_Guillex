@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitar información — TrackFlow</title>
+  <meta name="description" content="Solicita información sobre los servicios logísticos de TrackFlow para tu e-commerce.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+  <!-- ============ HEADER ============ -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2 text-xl font-bold text-indigo-700" aria-label="TrackFlow — Ir al inicio">
+          <svg class="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <rect x="2" y="8" width="12" height="20" rx="2" class="fill-indigo-600"/>
+            <rect x="18" y="4" width="12" height="24" rx="2" class="fill-indigo-500"/>
+            <path d="M8 28V20M24 28V16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          TrackFlow
+        </a>
+        <nav class="hidden md:flex items-center gap-8" aria-label="Navegación del formulario">
+          <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-indigo-700 transition-colors">Volver al inicio</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+
+    <!-- ============ FORM SECTION ============ -->
+    <section class="py-12 md:py-20">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900">Solicitar información</h1>
+          <p class="mt-4 text-lg text-gray-600">
+            Cuéntanos sobre tu negocio y te contactaremos en las próximas 24-48 horas.
+          </p>
+        </div>
+
+        <!-- Success message (hidden by default) -->
+        <div id="success-message" class="hidden p-8 bg-green-50 border border-green-200 rounded-2xl text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">¡Gracias por tu interés en TrackFlow!</h2>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            Hemos recibido tu solicitud. Nuestro equipo comercial revisará tu información y te contactará en las próximas 24-48 horas para agendar una llamada y conocer tus necesidades logísticas en detalle.
+          </p>
+          <p class="text-gray-600">
+            Si tienes alguna consulta urgente, escríbenos directamente a
+            <a href="mailto:comercial@trackflow.com" class="text-indigo-700 hover:underline font-medium">comercial@trackflow.com</a>
+          </p>
+          <a href="index.html" class="mt-6 inline-flex items-center px-6 py-3 text-sm font-semibold text-white bg-indigo-700 rounded-lg hover:bg-indigo-800 transition-colors">
+            Volver al inicio
+          </a>
+        </div>
+
+        <!-- Form -->
+        <form id="contact-form" class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 space-y-8" novalidate>
+
+          <!-- Company info -->
+          <fieldset>
+            <legend class="text-lg font-semibold text-gray-900 mb-6">Datos de la empresa</legend>
+            <div class="grid md:grid-cols-2 gap-6">
+
+              <div>
+                <label for="company" class="block text-sm font-medium text-gray-700 mb-1.5">
+                  Nombre de la empresa <span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="company" name="company"
+                       class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+                       placeholder="Ej: Mi Tienda S.L."
+                       minlength="2" required>
+                <p id="company-error" class="mt-1 text-sm text-red-600 hidden"></p>
+              </div>
+
+              <div>
+                <label for="contact" class="block text-sm font-medium text-gray-700 mb-1.5">
+                  Persona de contacto <span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="contact" name="contact"
+                       class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+                       placeholder="Ej: Ana García"
+                       required>
+                <p id="contact-error" class="mt-1 text-sm text-red-600 hidden"></p>
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1.5">
+                  Email corporativo <span class="text-red-500">*</span>
+                </label>
+                <input type="email" id="email" name="email"
+                       class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+                       placeholder="nombre@empresa.com"
+                       required>
+                <p id="email-error" class="mt-1 text-sm text-red-600 hidden"></p>
+              </div>
+
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1.5">
+                  Teléfono <span class="text-red-500">*</span>
+                </label>
+                <input type="tel" id="phone" name="phone"
+                       class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+                       placeholder="+1 213 555 0147"
+                       required>
+                <p id="phone-error" class="mt-1 text-sm text-red-600 hidden"></p>
+              </div>
+
+              <div class="md:col-span-2">
+                <label for="website" class="block text-sm font-medium text-gray-700 mb-1.5">
+                  Sitio web de la empresa
+                </label>
+                <input type="url" id="website" name="website"
+                       class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors"
+                       placeholder="https://miempresa.com">
+                <p id="website-error" class="mt-1 text-sm text-red-600 hidden"></p>
+              </div>
+
+            </div>
+          </fieldset>
+
+          <!-- Operation details -->
+          <fieldset>
+            <legend class="text-lg font-semibold text-gray-900 mb-6">Detalles de la operación</legend>
+            <div class="grid md:grid-cols-2 gap-6">
+
+              <div>
+                <label for="country" class="block text-sm font-medium text-gray-700 mb-1.5">
+                  País de operación principal <span class="text-red-500">*</span>
+                </label>
+                <select id="country" name="country" required
+                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors bg-white">
+                  <option value="">Selecciona un país</option>
+                  <option value="us">Estados Unidos</option>
+                  <option value="es">España</option>
+                  <option value="both">Ambos</option>
+                  <option value="other">Otro</option>
+                </select>
+                <p id="country-error" class="mt-1 text-sm text-red-600 hidden"></p>
+              </div>
+
+              <div>
+                <label for="product-type" class="block text-sm font-medium text-gray-700 mb-1.5">
+                  Tipo de producto <span class="text-red-500">*</span>
+                </label>
+                <select id="product-type" name="product-type" required
+                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors bg-white">
+                  <option value="">Selecciona un tipo</option>
+                  <option value="moda">Moda</option>
+                  <option value="electronica">Electrónica</option>
+                  <option value="cosmetica">Cosmética</option>
+                  <option value="alimentacion">Alimentación</option>
+                  <option value="otro">Otro</option>
+                </select>
+                <p id="product-type-error" class="mt-1 text-sm text-red-600 hidden"></p>
+              </div>
+
+              <div>
+                <label for="volume" class="block text-sm font-medium text-gray-700 mb-1.5">
+                  Volumen mensual estimado de envíos <span class="text-red-500">*</span>
+                </label>
+                <select id="volume" name="volume" required
+                        class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors bg-white">
+                  <option value="">Selecciona un volumen</option>
+                  <option value="0-100">0-100 envíos/mes</option>
+                  <option value="101-500">101-500 envíos/mes</option>
+                  <option value="501-2000">501-2000 envíos/mes</option>
+                  <option value="2000+">Más de 2000 envíos/mes</option>
+                  <option value="unsure">No estoy seguro</option>
+                </select>
+                <p id="volume-error" class="mt-1 text-sm text-red-600 hidden"></p>
+              </div>
+
+              <!-- Low volume warning -->
+              <div id="volume-warning" class="md:col-span-2 hidden p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm">
+                <div class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                  </svg>
+                  <div>
+                    <p class="font-medium">Aviso sobre volumen reducido</p>
+                    <p>Para volúmenes menores a 100 envíos mensuales, nuestros servicios podrían no ser la solución más eficiente. ¿Seguro que quieres continuar?</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </fieldset>
+
+          <!-- Services -->
+          <fieldset>
+            <legend class="text-lg font-semibold text-gray-900 mb-4">Servicios de interés <span class="text-red-500">*</span></legend>
+            <div class="space-y-3">
+              <label class="flex items-start gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <input type="checkbox" name="services" value="warehousing"
+                       class="mt-1 h-4 w-4 text-indigo-700 border-gray-300 rounded focus:ring-indigo-500">
+                <div>
+                  <span class="font-medium text-gray-900">Almacenaje</span>
+                  <p class="text-sm text-gray-500">Gestión de inventario, picking y packing en nuestros almacenes</p>
+                </div>
+              </label>
+              <label class="flex items-start gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <input type="checkbox" name="services" value="last-mile"
+                       class="mt-1 h-4 w-4 text-indigo-700 border-gray-300 rounded focus:ring-indigo-500">
+                <div>
+                  <span class="font-medium text-gray-900">Última milla</span>
+                  <p class="text-sm text-gray-500">Entregas al cliente final con carriers certificados</p>
+                </div>
+              </label>
+              <label class="flex items-start gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                <input type="checkbox" name="services" value="reverse-logistics"
+                       class="mt-1 h-4 w-4 text-indigo-700 border-gray-300 rounded focus:ring-indigo-500">
+                <div>
+                  <span class="font-medium text-gray-900">Logística inversa</span>
+                  <p class="text-sm text-gray-500">Gestión de devoluciones, inspección y reacondicionamiento</p>
+                </div>
+              </label>
+            </div>
+            <p id="services-error" class="mt-2 text-sm text-red-600 hidden"></p>
+          </fieldset>
+
+          <!-- Current 3PL -->
+          <fieldset>
+            <legend class="text-lg font-semibold text-gray-900 mb-4">
+              ¿Actualmente trabajas con otro 3PL? <span class="text-red-500">*</span>
+            </legend>
+            <div class="flex flex-wrap gap-6">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="current-3pl" value="yes"
+                       class="h-4 w-4 text-indigo-700 border-gray-300 focus:ring-indigo-500">
+                <span class="text-gray-700">Sí</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="current-3pl" value="no"
+                       class="h-4 w-4 text-indigo-700 border-gray-300 focus:ring-indigo-500">
+                <span class="text-gray-700">No</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="current-3pl" value="evaluating"
+                       class="h-4 w-4 text-indigo-700 border-gray-300 focus:ring-indigo-500">
+                <span class="text-gray-700">Estoy evaluando opciones</span>
+              </label>
+            </div>
+            <p id="current-3pl-error" class="mt-2 text-sm text-red-600 hidden"></p>
+          </fieldset>
+
+          <!-- Comments -->
+          <fieldset>
+            <label for="comments" class="block text-sm font-medium text-gray-700 mb-1.5">
+              Comentarios o necesidades específicas
+            </label>
+            <textarea id="comments" name="comments" rows="4" maxlength="500"
+                      class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-colors resize-y"
+                      placeholder="Cuéntanos más sobre tu proyecto..."></textarea>
+            <div class="flex justify-between items-center mt-1">
+              <p id="comments-error" class="text-sm text-red-600 hidden"></p>
+              <p id="comments-counter" class="text-sm text-gray-400 ml-auto">0/500</p>
+            </div>
+          </fieldset>
+
+          <!-- Privacy -->
+          <fieldset>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" id="privacy" name="privacy" required
+                     class="mt-1 h-4 w-4 text-indigo-700 border-gray-300 rounded focus:ring-indigo-500">
+              <span class="text-sm text-gray-700">
+                Acepto la <a href="#" class="text-indigo-700 hover:underline font-medium">política de privacidad</a>
+                <span class="text-red-500">*</span>
+              </span>
+            </label>
+            <p id="privacy-error" class="mt-1 text-sm text-red-600 hidden"></p>
+          </fieldset>
+
+          <!-- Submit / Reset -->
+          <div class="pt-2 flex flex-col sm:flex-row gap-3">
+            <button type="submit"
+                    class="w-full sm:w-auto px-8 py-3.5 text-base font-semibold text-white bg-indigo-700 rounded-lg hover:bg-indigo-800 shadow-lg shadow-indigo-200 transition-all">
+              Enviar solicitud
+            </button>
+            <button type="reset" id="limpiar-btn"
+                    class="w-full sm:w-auto px-6 py-3.5 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+              Limpiar formulario
+            </button>
+          </div>
+
+        </form>
+
+        <!-- Back link (hidden on mobile since footer has it) -->
+        <div class="mt-8 text-center hidden sm:block">
+          <a href="index.html" class="text-sm text-gray-500 hover:text-indigo-700 transition-colors">
+            &larr; Volver a la página principal
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-gray-900 text-gray-400" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+      <p class="text-xs sm:text-sm">
+        &copy; 2025 TrackFlow. Todos los derechos reservados.
+      </p>
+      <a href="index.html" class="text-xs sm:text-sm text-gray-500 hover:text-white transition-colors mt-2 inline-block">
+        &larr; Volver a la página principal
+      </a>
+    </div>
+  </footer>
+
+  <script src="validation.js"></script>
+</body>
+</html>

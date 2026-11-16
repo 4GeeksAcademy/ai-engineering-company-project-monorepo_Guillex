@@ -1,0 +1,13 @@
+{
+    "name": "trackflow-hito1",
+    "version": "1.0.0",
+    "description": "Sitio web público de TrackFlow — Hito 1",
+    "private": true,
+    "scripts": {
+        "start": "serve .",
+        "dev": "serve . -l 3000"
+    },
+    "devDependencies": {
+        "serve": "^14.2.0"
+    }
+}
