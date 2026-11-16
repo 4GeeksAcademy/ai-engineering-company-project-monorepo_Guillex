@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TrackFlow — Hito 2: Test Visual</title>
+    <!-- Tailwind CSS v3 via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Para que los logs en pantalla tengan scroll */
+      .log-panel {
+        max-height: 400px;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-900 text-gray-100 font-sans antialiased">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+      <!-- Header -->
+      <header class="mb-10 text-center">
+        <h1 class="text-4xl font-bold text-emerald-400 tracking-tight">
+          TrackFlow
+        </h1>
+        <p class="text-lg text-gray-400 mt-2">
+          Hito 2 — Fundamentos de Programación &middot; Test Visual
+        </p>
+        <p class="text-sm text-gray-500 mt-1">
+          Implementación TypeScript &mdash; Logística de Última Milla
+        </p>
+      </header>
+
+      <!-- Grid de botones -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        <!-- Colecciones -->
+        <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <h2 class="text-sm font-semibold text-emerald-400 uppercase tracking-wider mb-3">
+            📦 Colecciones
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            <button data-test="filterByWarehouse"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Filtrar por Los Angeles
+            </button>
+            <button data-test="filterByCategory"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Filtrar Electrónica
+            </button>
+            <button data-test="filterLowStock"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Stock bajo
+            </button>
+            <button data-test="sortByStock"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Ordenar por stock
+            </button>
+            <button data-test="sortByReliability"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Ordenar carriers
+            </button>
+          </div>
+        </div>
+
+        <!-- Búsquedas -->
+        <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <h2 class="text-sm font-semibold text-sky-400 uppercase tracking-wider mb-3">
+            🔍 Búsquedas
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            <button data-test="findBySKU"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Buscar SHOE-BLK-42
+            </button>
+            <button data-test="findShipment"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Buscar SH-2024-8821
+            </button>
+            <button data-test="binarySearch"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Búsq. binaria peso 0.8
+            </button>
+          </div>
+        </div>
+
+        <!-- Costos y Scoring -->
+        <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <h2 class="text-sm font-semibold text-amber-400 uppercase tracking-wider mb-3">
+            💰 Costos &amp; Scoring
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            <button data-test="calcCost"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Calcular costo envío
+            </button>
+            <button data-test="scoreCarrier"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Puntuar carriers
+            </button>
+            <button data-test="selectBest"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Mejor carrier
+            </button>
+          </div>
+        </div>
+
+        <!-- Agregaciones -->
+        <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <h2 class="text-sm font-semibold text-violet-400 uppercase tracking-wider mb-3">
+            📊 Agregaciones
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            <button data-test="countByCategory"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Contar por categoría
+            </button>
+            <button data-test="totalValue"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Valor inventario
+            </button>
+            <button data-test="avgDistance"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Distancia promedio
+            </button>
+            <button data-test="groupByStatus"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Agrupar por estado
+            </button>
+            <button data-test="topCarriers"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Top carriers
+            </button>
+          </div>
+        </div>
+
+        <!-- Validaciones -->
+        <div class="bg-gray-800 rounded-xl p-4 border border-gray-700">
+          <h2 class="text-sm font-semibold text-rose-400 uppercase tracking-wider mb-3">
+            ✅ Validaciones
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            <button data-test="validateProduct"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Validar producto
+            </button>
+            <button data-test="validateShipment"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Validar envío
+            </button>
+            <button data-test="validateCarrier"
+              class="bg-gray-700 hover:bg-gray-600 text-gray-200 text-xs px-3 py-2 rounded-lg transition-colors">
+              Validar carrier
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel de salida -->
+      <div class="bg-gray-800 rounded-xl border border-gray-700 p-4">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-sm font-semibold text-gray-300 uppercase tracking-wider">
+            🖥️ Salida
+          </h2>
+          <button id="clearLog"
+            class="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+            Limpiar
+          </button>
+        </div>
+        <pre id="output" class="log-panel bg-gray-950 rounded-lg p-4 text-sm text-emerald-300 font-mono leading-relaxed whitespace-pre-wrap">// Haz clic en cualquier botón para ejecutar una función.
+// Los resultados se mostrarán aquí abajo.
+</pre>
+      </div>
+
+      <!-- Footer -->
+      <footer class="mt-10 text-center text-gray-600 text-xs">
+        TrackFlow &middot; AI Engineering &middot; Hito 2
+      </footer>
+    </div>
+
+    <!-- Módulo principal -->
+    <script type="module">
+      // -----------------------------------------------------------------------
+      // Importaciones
+      // -----------------------------------------------------------------------
+      import {
+        filterProductsByWarehouse,
+        filterProductsByCategory,
+        filterLowStockProducts,
+        sortProductsByStock,
+        sortCarriersByReliability,
+      } from "./dist/utils/collections.js";
+
+      import {
+        findProductBySKU,
+        findShipmentById,
+        binarySearchProductByWeight,
+      } from "./dist/utils/search.js";
+
+      import {
+        calculateShippingCost,
+        scoreCarrierForShipment,
+        selectBestCarrier,
+        countProductsByCategory,
+        calculateTotalInventoryValue,
+        calculateAverageShipmentDistance,
+        groupShipmentsByStatus,
+        findTopCarriers,
+      } from "./dist/utils/transformations.js";
+
+      import {
+        validateProduct,
+        validateShipment,
+        validateCarrier,
+      } from "./dist/utils/validations.js";
+
+      import {
+        sampleProducts,
+        sampleCarriers,
+        sampleShipment,
+      } from "./dist/data/samples.js";
+
+      // -----------------------------------------------------------------------
+      // UI helpers
+      // -----------------------------------------------------------------------
+      const outputEl = document.getElementById("output");
+
+      function log(label, data) {
+        const timestamp = new Date().toLocaleTimeString();
+        let formatted;
+        try {
+          formatted = JSON.stringify(data, null, 2);
+        } catch {
+          formatted = String(data);
+        }
+        outputEl.textContent += `\n[${timestamp}] ▶ ${label}\n${formatted}\n`;
+        outputEl.scrollTop = outputEl.scrollHeight;
+      }
+
+      function clearLog() {
+        outputEl.textContent = "";
+      }
+
+      document.getElementById("clearLog").addEventListener("click", clearLog);
+
+      // -----------------------------------------------------------------------
+      // Handlers — Colecciones
+      // -----------------------------------------------------------------------
+      document.querySelector('[data-test="filterByWarehouse"]').addEventListener("click", () => {
+        const result = filterProductsByWarehouse(sampleProducts, "Los Angeles");
+        log(`filterProductsByWarehouse → ${result.length} productos`, result);
+      });
+
+      document.querySelector('[data-test="filterByCategory"]').addEventListener("click", () => {
+        const result = filterProductsByCategory(sampleProducts, "Electronics");
+        log(`filterProductsByCategory → ${result.length} productos`, result);
+      });
+
+      document.querySelector('[data-test="filterLowStock"]').addEventListener("click", () => {
+        const result = filterLowStockProducts(sampleProducts);
+        log(`filterLowStockProducts → ${result.length} productos`, result);
+      });
+
+      document.querySelector('[data-test="sortByStock"]').addEventListener("click", () => {
+        const result = sortProductsByStock(sampleProducts, "asc");
+        log("sortProductsByStock (asc)", result);
+      });
+
+      document.querySelector('[data-test="sortByReliability"]').addEventListener("click", () => {
+        const result = sortCarriersByReliability(sampleCarriers, "desc");
+        log("sortCarriersByReliability (desc)", result);
+      });
+
+      // -----------------------------------------------------------------------
+      // Handlers — Búsquedas
+      // -----------------------------------------------------------------------
+      document.querySelector('[data-test="findBySKU"]').addEventListener("click", () => {
+        const result = findProductBySKU(sampleProducts, "SHOE-BLK-42");
+        log("findProductBySKU('SHOE-BLK-42')", result);
+      });
+
+      document.querySelector('[data-test="findShipment"]').addEventListener("click", () => {
+        const result = findShipmentById([sampleShipment], "SH-2024-8821");
+        log("findShipmentById('SH-2024-8821')", result);
+      });
+
+      document.querySelector('[data-test="binarySearch"]').addEventListener("click", () => {
+        // Ordenar por peso para búsqueda binaria
+        const sorted = [...sampleProducts].sort((a, b) => a.weightKg - b.weightKg);
+        const idx = binarySearchProductByWeight(sorted, 0.8);
+        log(`binarySearchProductByWeight(0.8) → índice ${idx}`, idx >= 0 ? sorted[idx] : "No encontrado");
+      });
+
+      // -----------------------------------------------------------------------
+      // Handlers — Costos y Scoring
+      // -----------------------------------------------------------------------
+      document.querySelector('[data-test="calcCost"]').addEventListener("click", () => {
+        const laptop = sampleProducts[1]; // Laptop Dell
+        const cost = calculateShippingCost(sampleShipment, laptop, sampleCarriers[1]); // SEUR
+        log(`calculateShippingCost (SEUR, Laptop, Express) → $${cost}`, { cost });
+      });
+
+      document.querySelector('[data-test="scoreCarrier"]').addEventListener("click", () => {
+        const laptop = sampleProducts[1];
+        const scores = sampleCarriers.map((c) => ({
+          carrier: c.name,
+          score: scoreCarrierForShipment(c, sampleShipment, laptop),
+        }));
+        log("scoreCarrierForShipment (todos los carriers)", scores);
+      });
+
+      document.querySelector('[data-test="selectBest"]').addEventListener("click", () => {
+        const laptop = sampleProducts[1];
+        const best = selectBestCarrier(sampleCarriers, sampleShipment, laptop);
+        log("selectBestCarrier", best);
+      });
+
+      // -----------------------------------------------------------------------
+      // Handlers — Agregaciones
+      // -----------------------------------------------------------------------
+      document.querySelector('[data-test="countByCategory"]').addEventListener("click", () => {
+        const result = countProductsByCategory(sampleProducts);
+        log("countProductsByCategory", result);
+      });
+
+      document.querySelector('[data-test="totalValue"]').addEventListener("click", () => {
+        const result = calculateTotalInventoryValue(sampleProducts);
+        log(`calculateTotalInventoryValue → $${result}`, { totalUSD: result });
+      });
+
+      document.querySelector('[data-test="avgDistance"]').addEventListener("click", () => {
+        const result = calculateAverageShipmentDistance([sampleShipment]);
+        log(`calculateAverageShipmentDistance → ${result} km`, { averageKm: result });
+      });
+
+      document.querySelector('[data-test="groupByStatus"]').addEventListener("click", () => {
+        const result = groupShipmentsByStatus([sampleShipment]);
+        log("groupShipmentsByStatus", result);
+      });
+
+      document.querySelector('[data-test="topCarriers"]').addEventListener("click", () => {
+        // Crear varios envíos simulados para probar findTopCarriers
+        const moreShipments = [
+          { ...sampleShipment, carrier: "UPS" },
+          { ...sampleShipment, id: "SH-0002", carrier: "UPS" },
+          { ...sampleShipment, id: "SH-0003", carrier: "SEUR" },
+        ];
+        const result = findTopCarriers(moreShipments, 2);
+        log("findTopCarriers (top 2)", result);
+      });
+
+      // -----------------------------------------------------------------------
+      // Handlers — Validaciones
+      // -----------------------------------------------------------------------
+      document.querySelector('[data-test="validateProduct"]').addEventListener("click", () => {
+        const result = validateProduct(sampleProducts[0]);
+        log("validateProduct (SHOE-BLK-42)", result);
+      });
+
+      document.querySelector('[data-test="validateShipment"]').addEventListener("click", () => {
+        const result = validateShipment(sampleShipment);
+        log("validateShipment (SH-2024-8821)", result);
+      });
+
+      document.querySelector('[data-test="validateCarrier"]').addEventListener("click", () => {
+        const result = validateCarrier(sampleCarriers[0]);
+        log("validateCarrier (UPS)", result);
+      });
+    </script>
+  </body>
+</html>

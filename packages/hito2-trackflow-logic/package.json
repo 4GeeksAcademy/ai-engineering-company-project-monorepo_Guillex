@@ -1,0 +1,20 @@
+{
+    "name": "@trackflow/hito2-logic",
+    "version": "1.0.0",
+    "private": true,
+    "description": "TrackFlow Hito 2 — Lógica de negocio: filtrado, búsqueda, transformaciones y validaciones en TypeScript",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "check": "tsc --noEmit",
+        "clean": "rm -rf dist"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "typescript": "^5.8.0"
+    }
+}
